@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube LLM Classifier</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>YouTube LLM Classifier</h1>
+
+      <label>
+        Endpoint
+        <input id="endpoint" type="text" placeholder="http://localhost:11434/api/generate" />
+      </label>
+
+      <label>
+        Model
+        <input id="model" type="text" placeholder="llama3" />
+      </label>
+
+      <label>
+        Categories (comma-separated)
+        <textarea id="categories" rows="3" placeholder="Education, Entertainment, News"></textarea>
+      </label>
+
+      <label>
+        Max currently loaded videos
+        <input id="maxVideos" type="number" min="1" max="200" />
+      </label>
+
+      <fieldset>
+        <legend>Include in classification</legend>
+        <label><input id="includeTitle" type="checkbox" /> Title</label>
+        <label><input id="includeDescription" type="checkbox" /> Description</label>
+        <label><input id="includeTranscript" type="checkbox" /> Transcript</label>
+      </fieldset>
+
+      <button id="run">Classify loaded videos</button>
+      <p id="status" aria-live="polite"></p>
+      <ul id="results"></ul>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

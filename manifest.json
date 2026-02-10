@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Local LLM Classifier",
+  "description": "Classify currently loaded YouTube videos into user-defined categories using a local LLM.",
+  "version": "1.0.0",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Classify current YouTube page"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

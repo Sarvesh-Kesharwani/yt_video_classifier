@@ -1,0 +1,64 @@
+:root {
+  color-scheme: light dark;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  width: 360px;
+}
+
+main {
+  padding: 12px;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+label,
+fieldset {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+fieldset label {
+  margin-bottom: 6px;
+}
+
+button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#status {
+  font-size: 12px;
+  min-height: 18px;
+}
+
+#results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 180px;
+  overflow: auto;
+  font-size: 12px;
+}
+
+#results li {
+  padding: 4px 0;
+  border-bottom: 1px solid #ccc;
+}

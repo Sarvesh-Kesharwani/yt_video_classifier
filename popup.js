@@ -17,7 +17,7 @@ const modeRow            = document.querySelector('.mode-row');
 const inputRow           = document.querySelector('.input-row');
 const editRadios         = document.querySelectorAll('input[name="edit-list"]');
 
-// Settings tab
+// Settings tab 
 const savePathInput      = document.getElementById('save-path-input');
 const saveConfigBtn      = document.getElementById('save-config-btn');
 const loadConfigBtn      = document.getElementById('load-config-btn');

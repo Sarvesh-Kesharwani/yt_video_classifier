@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Video Filter",
+  "version": "1.0",
+  "description": "Hide or show YouTube videos by category using a local Ollama model.",
+  "permissions": ["storage", "downloads"],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "http://localhost:11434/*",
+    "https://api.openai.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

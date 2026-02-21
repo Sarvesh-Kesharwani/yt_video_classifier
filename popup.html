@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Video Filter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>🎯 YT Filter</h1>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="filter">Filter</button>
+    <button class="tab-btn"        data-tab="settings">Settings</button>
+  </div>
+
+  <!-- ══════════ FILTER TAB ══════════ -->
+  <div class="tab-panel" id="tab-filter">
+
+    <!-- Keywords / AI Categories / Channels -->
+    <div class="filtering-mode-row">
+      <button class="fm-btn active" data-mode="keyword">Keywords</button>
+      <button class="fm-btn" data-mode="category">AI Categories</button>
+      <button class="fm-btn" data-mode="channel">Channels</button>
+    </div>
+
+    <!-- Shown only in channel mode -->
+    <div id="channel-mode-section" style="display:none">
+      <p class="channel-mode-count" id="channel-count">0 channels blocked</p>
+      <div class="ai-channel-row">
+        <label class="switch">
+          <input type="checkbox" id="ai-channel-toggle" />
+          <span class="slider"></span>
+        </label>
+        <span class="ai-channel-label">AI-block similar channels</span>
+      </div>
+      <div id="channel-list" class="keyword-list"></div>
+    </div>
+
+    <!-- Which list to edit -->
+    <div class="mode-row">
+      <span class="mode-heading">Editing:</span>
+      <label class="mode-option">
+        <input type="radio" name="edit-list" value="block" checked />
+        Block list <span class="mode-hint">(hide matches)</span>
+      </label>
+      <label class="mode-option">
+        <input type="radio" name="edit-list" value="allow" />
+        Allow list <span class="mode-hint">(show only matches)</span>
+      </label>
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="keyword-input" placeholder="Enter a keyword..." />
+      <button id="add-btn" title="Add">+</button>
+    </div>
+
+    <p id="list-label" class="list-label">Block keywords — hide matches (0)</p>
+    <div id="keyword-list" class="keyword-list"></div>
+
+    <div class="toggle-row">
+      <label class="switch">
+        <input type="checkbox" id="enabled-toggle" checked />
+        <span class="slider"></span>
+      </label>
+      <span id="status-label">Enabled</span>
+    </div>
+
+    <p class="hidden-count">
+      Videos hidden: <strong id="hidden-count">0</strong>
+    </p>
+
+  </div><!-- /tab-filter -->
+
+
+  <!-- ══════════ SETTINGS TAB ══════════ -->
+  <div class="tab-panel" id="tab-settings" style="display:none">
+
+    <!-- Config file path -->
+    <div class="settings-section">
+      <p class="settings-label">Config file path</p>
+      <p class="settings-hint">Relative to your Downloads folder</p>
+      <div class="path-row">
+        <input type="text" id="save-path-input" placeholder="yt-filter" />
+        <span class="path-suffix">/config.json</span>
+      </div>
+      <div class="action-row">
+        <button id="save-config-btn" class="action-btn" title="Save all settings to config.json">💾 Save</button>
+        <button id="load-config-btn" class="action-btn" title="Load settings from config.json">📂 Load</button>
+        <button id="log-btn"         class="action-btn" title="Download Ollama API call log">📋 Log</button>
+      </div>
+    </div>
+
+    <!-- AI provider settings -->
+    <div class="settings-section">
+      <p class="settings-label">AI Settings</p>
+
+      <div class="provider-row">
+        <span class="provider-label">Provider</span>
+        <select id="ai-provider">
+          <option value="ollama">Ollama (local)</option>
+          <option value="openai">OpenAI-compatible</option>
+        </select>
+      </div>
+
+      <div class="model-row">
+        <span class="model-label">Model</span>
+        <input type="text" id="model-input" placeholder="qwen2.5-coder:7b" />
+      </div>
+
+      <!-- Shown only when provider ≠ ollama -->
+      <div class="apikey-row" id="apikey-row" style="display:none">
+        <div class="apikey-field">
+          <label for="api-key-input">API Key</label>
+          <input type="password" id="api-key-input" placeholder="sk-..." autocomplete="off" />
+        </div>
+        <div class="apikey-field">
+          <label for="api-base-url-input">Base URL</label>
+          <input type="text" id="api-base-url-input" placeholder="https://api.openai.com/v1" />
+        </div>
+      </div>
+
+    </div><!-- /settings-section AI -->
+
+    <!-- Saved videos for category discovery -->
+    <div class="settings-section">
+      <p class="settings-label">Saved Videos</p>
+      <p class="settings-hint">Titles flagged via the + button on thumbnails</p>
+      <p class="settings-hint" id="saved-count">0 videos saved</p>
+      <div class="action-row">
+        <button id="export-saved-btn" class="action-btn" title="Download saved videos as JSON">📥 Export</button>
+        <button id="clear-saved-btn"  class="action-btn" title="Clear all saved videos">🗑 Clear</button>
+      </div>
+    </div>
+
+  </div><!-- /tab-settings -->
+
+  <!-- Hidden file picker used by Load button -->
+  <input type="file" id="config-file" accept=".json" style="display:none" />
+
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

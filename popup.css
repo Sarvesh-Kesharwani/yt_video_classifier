@@ -1,0 +1,435 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 280px;
+  padding: 10px;
+  background: #111;
+  color: #fff;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* ── Tab nav ── */
+.tab-nav {
+  display: flex;
+  gap: 2px;
+  margin-top: 8px;
+  border-bottom: 1px solid #333;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom-color: #ff0000;
+}
+
+.tab-btn:hover:not(.active) {
+  color: #aaa;
+}
+
+.tab-panel {
+  padding-top: 4px;
+}
+
+/* ── Filtering mode 3-way selector ── */
+.filtering-mode-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #222;
+}
+
+.fm-btn {
+  flex: 1;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: bold;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.fm-btn.active {
+  background: #cc0000;
+  border-color: #cc0000;
+  color: #fff;
+}
+
+.fm-btn:hover:not(.active) {
+  color: #ccc;
+  border-color: #555;
+}
+
+.channel-mode-count {
+  font-size: 11px;
+  color: #888;
+  margin: 6px 0 2px;
+}
+
+.ai-channel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.ai-channel-label {
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* ── Edit-list radio row ── */
+.mode-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.mode-heading {
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 2px;
+}
+
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mode-option input[type="radio"] {
+  accent-color: #ff0000;
+  cursor: pointer;
+}
+
+.mode-hint {
+  color: #888;
+  font-size: 11px;
+}
+
+/* ── Keyword / category input row ── */
+.input-row {
+  display: flex;
+  margin: 10px 0 0;
+  gap: 0;
+}
+
+/* Generic text input baseline */
+input[type="text"],
+input[type="password"] {
+  padding: 6px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #ff0000;
+}
+
+/* The main keyword/category input stretches in its flex row */
+#keyword-input {
+  flex: 1;
+  border-radius: 4px 0 0 4px;
+}
+
+#add-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background: #ff0000;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+#add-btn:hover {
+  background: #cc0000;
+}
+
+/* ── Keyword / category pill list ── */
+.list-label {
+  font-size: 11px;
+  color: #aaa;
+  margin: 6px 0 0 0;
+}
+
+.keyword-list {
+  margin-top: 6px;
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+.keyword-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border-left: 3px solid #ff0000;
+  font-size: 13px;
+}
+
+.keyword-pill span {
+  flex: 1;
+  word-break: break-word;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff0000;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  margin-left: 8px;
+  transition: transform 0.2s;
+}
+
+.remove-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ── Enable toggle ── */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #444;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #ff0000;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+#status-label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ── Hidden count ── */
+.hidden-count {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #ccc;
+  text-align: center;
+}
+
+.hidden-count strong {
+  color: #ff0000;
+}
+
+/* ── Settings tab sections ── */
+.settings-section {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #222;
+}
+
+.settings-section:first-child {
+  border-top: none;
+  margin-top: 6px;
+}
+
+.settings-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #aaa;
+  margin: 0 0 3px 0;
+}
+
+.settings-hint {
+  font-size: 10px;
+  color: #555;
+  margin: 0 0 6px 0;
+}
+
+/* ── Config path row ── */
+.path-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#save-path-input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 11px;
+}
+
+.path-suffix {
+  font-size: 11px;
+  color: #555;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ── Action buttons row ── */
+.action-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 5px 0;
+  font-size: 11px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #222;
+  color: #ccc;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.action-btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* ── AI Settings (provider / model / apikey) ── */
+.provider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.provider-label {
+  font-size: 11px;
+  color: #aaa;
+  flex-shrink: 0;
+  width: 52px;
+}
+
+#ai-provider {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 11px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+}
+
+#ai-provider:focus {
+  outline: none;
+  border-color: #ff0000;
+}
+
+.model-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.model-label {
+  font-size: 11px;
+  color: #aaa;
+  flex-shrink: 0;
+  width: 52px;
+}
+
+#model-input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 11px;
+}
+
+.apikey-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.apikey-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apikey-field label {
+  font-size: 11px;
+  color: #aaa;
+  flex-shrink: 0;
+  width: 52px;
+}
+
+.apikey-field input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 11px;
+}
